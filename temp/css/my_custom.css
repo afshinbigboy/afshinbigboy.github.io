@@ -1,0 +1,11 @@
+img {
+  border: 3px solid #000;
+  border-radius: 7.5px;
+
+  /*box-shadow:0 0 10px #000;*/
+  -webkit-transition: all .3s ease; /* Safari and Chrome */
+  -moz-transition: all .3s ease; /* Firefox */
+  -ms-transition: all .3s ease; /* IE 9 */
+  -o-transition: all .3s ease; /* Opera */
+  transition: all .3s ease;
+}
