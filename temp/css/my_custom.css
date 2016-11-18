@@ -1,11 +1,106 @@
-img {
-  border: 3px solid #000;
-  border-radius: 7.5px;
+body{
+    background-attachment: fixed;
+}
 
+.head-main{
+  /*background-color: rgba(240,240,240,.8);*/
+  background-image:url(file:///home/afshin/Documents/Github/afshinbigboy.github.io/temp/images/projects/4.jpg);
+  background-repeat: repeat;
+  background-position: top center;
+  /*background-size: 50% 50%;*/
+}
+
+img {
+  border: 2px solid #000;
+  /*border-radius: 7.5px;*/
   /*box-shadow:0 0 10px #000;*/
-  -webkit-transition: all .3s ease; /* Safari and Chrome */
-  -moz-transition: all .3s ease; /* Firefox */
-  -ms-transition: all .3s ease; /* IE 9 */
-  -o-transition: all .3s ease; /* Opera */
-  transition: all .3s ease;
+}
+
+.logo {
+  border: 0;
+  border-radius: 0;
+}
+
+.container {
+  /*max-width: 1000px;*/
+}
+
+.transparent {
+  background-color: rgba(100, 0, 0, 0);
+}
+
+.img-circle {
+  border: 1px solid #000;
+  border-radius: 50%;
+}
+
+.nav-top-fix {
+  background-color: rgba(240, 240, 240, .95);
+  box-shadow: 0 0 20px #999;
+  border-bottom: 0;
+}
+
+.grad-gray-line-center {
+    margin: 2% 0;
+    height: 2px;
+    background: -webkit-linear-gradient(left, #fff, gray, #fff); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(left, #fff, gray, #fff); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(left, #fff, gray, #fff); /* For Fx 3.6 to 15 */
+    background: linear-gradient(to right, #fff, gray, #fff); /* Standard syntax (must be last) */
+}
+
+.grad-gray-line-right {
+    margin-bottom: : 50px;
+    height: 1px;
+    background: -webkit-linear-gradient(left, #fff, #aaa); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(left, #fff, #aaa); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(left, #fff, #aaa); /* For Fx 3.6 to 15 */
+    background: linear-gradient(to right, #fff, #aaa); /* Standard syntax (must be last) */
+}
+
+h4{
+  font-weight: bold;
+  color: rgb(0,200,250);
+  text-shadow: 0 0 1px #aaa;
+}
+
+.footer-copyright{
+  text-align: center;
+  font-size: .6em;
+}
+
+.footer-end{
+  padding-bottom: 40px;
+}
+
+.footer-begin{
+  padding-top: 50px;
+}
+
+.docs-header{
+  text-transform: none;
+  letter-spacing: 0.1rem;
+}
+
+.margin-bottom-remove {
+  margin-bottom: 0;
+}
+
+.margin-top-remove {
+  margin-top: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.title-figure {
+  text-align: center;
+  font-size: .85em;
+}
+
+.page-thumb {
+  border: 1px solid #ccc;
+  border-radius: 0;
+  margin-bottom: 2.5em;
 }
