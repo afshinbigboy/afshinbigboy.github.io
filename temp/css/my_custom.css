@@ -58,6 +58,15 @@ img {
     background: linear-gradient(to right, #fff, #aaa); /* Standard syntax (must be last) */
 }
 
+.grad-gray-line-left {
+    margin-bottom: : 50px;
+    height: 1px;
+    background: -webkit-linear-gradient(left, #aaa, #fff); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(left, #aaa, #fff); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(left, #aaa, #fff); /* For Fx 3.6 to 15 */
+    background: linear-gradient(to right, #aaa, #fff); /* Standard syntax (must be last) */
+}
+
 h4{
   font-weight: bold;
   color: rgb(0,200,250);
