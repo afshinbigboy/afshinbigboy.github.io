@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<header>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Konkur</title>
+  <meta name="description" content="Countdown">
+  <meta name="author" content="ABB">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/my_custom.css">
+
+  <!-- Scripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script><script id="twitter-wjs" src="http://platform.twitter.com/widgets.js"></script><script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+  <link rel="stylesheet" href="css/github-prettify-theme.css">
+  <script src="js/countdown.js"></script>
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="dist/images/favicon.png">
+  <script type="text/javascript" charset="utf-8" async="" src="https://platform.twitter.com/js/button.77c2615a2ccf479f754f7610612efbbe.js"></script>
+
+</header>
+
+
+<body class="code-snippets-visible" style="">
+   <div class="grad-gray-line-center margin-top-remove"></div>
+   <div style="padding-top: 15%"></div>
+   <div class="container" style"margin-top: 200px !important">
+      <h4>Countdown until Konkur</h4>
+	  
+      <h5 id="countdown-holder" class="grad-gray-line-left"></h5>
+   </div>
+   
+   
+   
+   
+   
+   <script>
+      var clock = document.getElementById("countdown-holder"), targetDate = new Date(2017, 04, 25); // Jan 1, 2050
+      clock.innerHTML = countdown(targetDate).toString();
+   </script>
+
+   <script>
+      var clock = document.getElementById("countdown-holder"), targetDate = new Date(2017, 04, 25); // Jan 1, 2050;
+      clock.innerHTML = countdown(targetDate).toString();
+      setInterval(function(){ clock.innerHTML = countdown(targetDate).toString(); }, 1000);
+   </script>
+
+</body>
+</html>
