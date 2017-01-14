@@ -34,24 +34,32 @@
 
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="icon" type="image/png" href="dist/images/favicon.png">
-  <script type="text/javascript" charset="utf-8" async="" src="https://platform.twitter.com/js/button.77c2615a2ccf479f754f7610612efbbe.js"></script>
-
+  <link rel="icon" type="image/png" href="images/favicon.jpg">
+  
+  
 </header>
 
 
-<body class="code-snippets-visible" style="">
-   <div class="grad-gray-line-center margin-top-remove"></div>
-   <div style="padding-top: 15%"></div>
-   <div class="container" style"margin-top: 200px !important">
-      <h4>Countdown until Konkur</h4>
-	  
-      <h5 id="countdown-holder" class="grad-gray-line-left"></h5>
+<body id="body" class="code-snippets-visible head-main">
+   <div id="cloud-container" style="height: 100%; background-color: rgba(240,240,240,.85)">
+	   <div class="grad-gray-line-center margin-top-remove"></div>
+	   <div style="padding-top: 15%"></div>
+	   <div class="container" style"margin-top: 200px !important">
+		  <h4>Countdown until Konkur</h4>
+		  
+		  <h5 id="countdown-holder" class="grad-gray-line-left"></h5>
+	   </div>
    </div>
+
+   <div id="footer" class="footer; grad-gray-line-center" style="margin: 0;"></div>
    
    
    
    
+   
+   <script>
+      var clock = document.getElementById("body").addClass("head-main")
+   </script>
    
    <script>
       var clock = document.getElementById("countdown-holder"), targetDate = new Date(2017, 04, 25); // Jan 1, 2050
