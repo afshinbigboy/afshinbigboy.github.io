@@ -37,11 +37,11 @@ a{color:inherit;text-decoration:none}
 .shell{max-width:1320px;margin:0 auto;padding:0 22px;display:grid;grid-template-columns:270px minmax(0,1fr) 240px;gap:44px}
 @media(max-width:1180px){.shell{grid-template-columns:270px minmax(0,1fr)}.rail{display:none}}
 @media(max-width:860px){.shell{grid-template-columns:1fr;gap:0}}
-aside{position:sticky;top:0;align-self:start;height:100vh;padding:44px 0 28px;display:flex;flex-direction:column;gap:18px;overflow:auto;scrollbar-width:none}
-@media(max-width:860px){aside.side{position:static;height:auto;padding-top:56px;text-align:center;align-items:center}}
+aside{position:sticky;top:0;align-self:start;height:100vh;padding:44px 10px 28px;display:flex;flex-direction:column;gap:18px;overflow:auto;scrollbar-width:none}
+@media(max-width:860px){aside.side{position:static;height:auto;padding:56px 10px 0;text-align:center;align-items:center}}
 
 /* left profile */
-.photo{position:relative;width:132px;height:132px}
+.photo{position:relative;width:132px;height:132px;margin:6px 0 0 6px}
 .photo::before{content:"";position:absolute;inset:-5px;border-radius:50%;background:conic-gradient(from 0deg,var(--a),var(--b),var(--c),var(--a));animation:spin 9s linear infinite}
 .photo .face{position:relative;width:100%;height:100%;border-radius:50%;border:5px solid var(--bg);background:var(--grad);display:grid;place-items:center;font-weight:800;font-size:2.4rem;color:#fff;overflow:hidden}
 .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
