@@ -1,1 +1,315 @@
-Hello World
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Afshin Bozorgpour · Computer Vision & ML</title>
+<meta name="description" content="Researcher in computer vision and machine learning. Open to collaborating with motivated students and researchers on papers.">
+<meta name="theme-color" content="#07080f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07080f;--fg:#ecedf5;--mute:#9a9fb5;--line:rgba(255,255,255,.09);--card:rgba(255,255,255,.04);
+  --a:#7c5cff;--b:#22d3ee;--c:#ff5ca8;--grad:linear-gradient(120deg,var(--a),var(--b) 55%,var(--c))}
+:root[data-theme=light]{--bg:#f6f6fb;--fg:#14151f;--mute:#5b6075;--line:rgba(20,21,31,.1);--card:rgba(255,255,255,.72)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.7 Inter,system-ui,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--a);color:#fff}
+
+.bg{position:fixed;inset:0;z-index:-2;overflow:hidden}
+.bg i{position:absolute;border-radius:50%;filter:blur(90px);opacity:.42;animation:float 22s ease-in-out infinite}
+.bg i:nth-child(1){width:560px;height:560px;background:var(--a);top:-12%;left:-8%}
+.bg i:nth-child(2){width:480px;height:480px;background:var(--b);top:25%;right:-10%;animation-delay:-7s}
+.bg i:nth-child(3){width:520px;height:520px;background:var(--c);bottom:-18%;left:25%;animation-delay:-14s;opacity:.3}
+:root[data-theme=light] .bg i{opacity:.26}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(70px,50px) scale(1.12)}66%{transform:translate(-50px,80px) scale(.94)}}
+#net{position:fixed;inset:0;z-index:-1;pointer-events:none}
+.glow{position:fixed;width:420px;height:420px;border-radius:50%;pointer-events:none;z-index:-1;background:radial-gradient(circle,rgba(124,92,255,.16),transparent 65%);transform:translate(-50%,-50%);left:50%;top:30%}
+
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200% auto;animation:shine 8s linear infinite}
+@keyframes shine{to{background-position:200% center}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;backdrop-filter:blur(10px);transition:.3s}
+.mono{font:500 .74rem "JetBrains Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--b)}
+
+/* ---------- 3-column shell ---------- */
+.shell{max-width:1320px;margin:0 auto;padding:0 22px;display:grid;grid-template-columns:270px minmax(0,1fr) 240px;gap:44px}
+@media(max-width:1180px){.shell{grid-template-columns:270px minmax(0,1fr)}.rail{display:none}}
+@media(max-width:860px){.shell{grid-template-columns:1fr;gap:0}}
+aside{position:sticky;top:0;align-self:start;height:100vh;padding:44px 0 28px;display:flex;flex-direction:column;gap:18px;overflow:auto;scrollbar-width:none}
+@media(max-width:860px){aside.side{position:static;height:auto;padding-top:56px;text-align:center;align-items:center}}
+
+/* left profile */
+.photo{position:relative;width:132px;height:132px}
+.photo::before{content:"";position:absolute;inset:-5px;border-radius:50%;background:conic-gradient(from 0deg,var(--a),var(--b),var(--c),var(--a));animation:spin 9s linear infinite}
+.photo .face{position:relative;width:100%;height:100%;border-radius:50%;border:5px solid var(--bg);background:var(--grad);display:grid;place-items:center;font-weight:800;font-size:2.4rem;color:#fff;overflow:hidden}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+@keyframes spin{to{transform:rotate(360deg)}}
+.side h1{font-size:1.85rem;line-height:1.1;letter-spacing:-.03em;margin:6px 0 0;font-weight:800}
+.role{color:var(--mute);font-size:.93rem;margin:0}
+.type{font:500 .82rem "JetBrains Mono",monospace;color:var(--b);min-height:1.5em;margin:0}
+.type::after{content:"▍";animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.nav{display:grid;gap:2px;margin-top:6px;width:100%}
+@media(max-width:860px){.nav{display:none}}
+.nav a{padding:7px 12px;border-radius:10px;color:var(--mute);font-size:.92rem;border-left:2px solid transparent;transition:.2s}
+.nav a:hover{color:var(--fg);background:var(--card)}
+.nav a.on{color:var(--fg);border-left-color:var(--b);background:var(--card)}
+.social{display:flex;gap:8px;flex-wrap:wrap}
+.social a{font-size:.8rem;padding:5px 12px;border:1px solid var(--line);border-radius:99px;background:var(--card);transition:.2s}
+.social a:hover{background:var(--a);border-color:var(--a);color:#fff}
+.btn{display:inline-flex;gap:8px;align-items:center;justify-content:center;padding:11px 20px;border-radius:12px;font-weight:600;font-size:.92rem;border:1px solid var(--line);background:var(--card);cursor:pointer;color:var(--fg);font-family:inherit;transition:.25s}
+.btn:hover{transform:translateY(-2px);border-color:var(--a)}
+.btn.primary{background:var(--grad);border:0;color:#fff;box-shadow:0 10px 30px -10px var(--a)}
+.theme{margin-top:auto;background:none;border:1px solid var(--line);color:var(--mute);border-radius:10px;padding:6px 12px;cursor:pointer;font-family:inherit;font-size:.82rem}
+@media(max-width:860px){.theme{margin-top:6px}}
+
+/* right rail */
+.rail{padding:44px 0 28px}
+.rail .stick{position:sticky;top:44px;display:grid;gap:14px}
+.mini{padding:16px 18px;font-size:.88rem}
+.mini h4{margin:0 0 8px}
+.mini ul{margin:0;padding:0;list-style:none;display:grid;gap:7px;color:var(--mute)}
+.mini li b{color:var(--fg);font-weight:600}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#34d399;margin-right:8px;animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(52,211,153,.6)}70%{box-shadow:0 0 0 8px transparent}}
+
+/* center */
+main{padding:0 0 60px;min-width:0}
+section{padding:70px 0 6px}
+section:first-child{padding-top:64px}
+h2{font-size:clamp(1.55rem,3vw,2.05rem);letter-spacing:-.025em;margin:6px 0 20px;font-weight:800}
+p{margin:0 0 14px}
+.muted{color:var(--mute)}
+.lead{font-size:clamp(1.15rem,2.2vw,1.45rem);line-height:1.55;letter-spacing:-.01em;font-weight:500}
+.lead em{font-style:normal;color:var(--b)}
+
+.qs{display:grid;gap:12px}
+.q{padding:18px 22px;display:grid;grid-template-columns:34px 1fr;gap:14px;align-items:start}
+.q .n{font:500 .8rem "JetBrains Mono",monospace;color:var(--a);padding-top:3px}
+.q b{display:block;font-size:1.02rem;margin-bottom:3px;font-weight:600}
+.q span{color:var(--mute);font-size:.92rem}
+
+.theme-h{display:flex;gap:12px;align-items:baseline;margin:34px 0 14px}
+.theme-h h3{margin:0;font-size:1.1rem}
+.theme-h span{color:var(--mute);font-size:.9rem}
+.papers{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+.paper{overflow:hidden;display:flex;flex-direction:column}
+.paper:hover,.q:hover{border-color:rgba(124,92,255,.5);transform:translateY(-3px)}
+.paper .fig{background:#fff;aspect-ratio:16/9;overflow:hidden}
+.paper .fig img{width:100%;height:100%;object-fit:contain;transition:transform .5s}
+.paper:hover .fig img{transform:scale(1.06)}
+.paper .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
+.paper h4{margin:0;font-size:1rem;line-height:1.35}
+.paper p{margin:0;color:var(--mute);font-size:.88rem;flex:1}
+.links{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.links a{font-size:.78rem;padding:3px 11px;border:1px solid var(--line);border-radius:99px;transition:.2s}
+.links a:hover{background:var(--a);border-color:var(--a);color:#fff}
+.listrow{padding:14px 18px;display:grid;gap:3px}
+.listrow b{font-size:.98rem}
+
+/* collaboration */
+.collab{padding:34px 30px;border-radius:26px;background:linear-gradient(135deg,rgba(124,92,255,.17),rgba(34,211,238,.09),rgba(255,92,168,.13));border:1px solid var(--line)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:22px 0}
+.col{padding:18px 20px}
+.col h4{margin:0 0 10px;font-size:.98rem}
+.col ul{margin:0;padding-left:18px;color:var(--mute);font-size:.92rem;display:grid;gap:5px}
+.steps{counter-reset:s;display:grid;gap:12px;margin:18px 0 6px;padding:0;list-style:none}
+.steps li{counter-increment:s;padding-left:46px;position:relative;color:var(--mute);font-size:.93rem}
+.steps li::before{content:counter(s);position:absolute;left:0;top:-1px;width:30px;height:30px;border-radius:50%;background:var(--grad);color:#fff;font-weight:700;font-size:.85rem;display:grid;place-items:center}
+.steps li b{color:var(--fg);display:block}
+.mail{font:500 1.02rem "JetBrains Mono",monospace;padding:12px 18px;border:1px dashed var(--line);border-radius:12px;background:var(--card);display:inline-block;user-select:all}
+.mail span{color:var(--b)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+
+.timeline{border-left:2px solid var(--line);margin-left:6px;display:grid;gap:20px;padding-left:24px}
+.tl{position:relative}
+.tl::before{content:"";position:absolute;left:-31px;top:8px;width:12px;height:12px;border-radius:50%;background:var(--grad);box-shadow:0 0 0 4px var(--bg)}
+.tl b{display:block;font-weight:600}.tl span{color:var(--mute);font-size:.9rem}
+.tags{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0;list-style:none}
+.tags li{padding:5px 13px;border:1px solid var(--line);background:var(--card);border-radius:99px;font-size:.86rem}
+footer{padding:50px 0 10px;color:var(--mute);font-size:.84rem}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s}
+.reveal.in{opacity:1;transform:none}
+.toast{position:fixed;bottom:26px;left:50%;transform:translate(-50%,80px);background:var(--fg);color:var(--bg);padding:10px 18px;border-radius:12px;font-size:.88rem;transition:.35s;z-index:50}
+.toast.show{transform:translate(-50%,0)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="bg"><i></i><i></i><i></i></div>
+<canvas id="net"></canvas>
+<div class="glow" id="glow"></div>
+
+<div class="shell">
+  <!-- LEFT -->
+  <aside class="side">
+    <div class="photo"><div class="face">AB<img src="img/profile.jpg" alt="Afshin Bozorgpour" onerror="this.remove()"></div></div>
+    <div>
+      <h1>Afshin<br><span class="grad">Bozorgpour</span></h1>
+      <p class="role" style="margin-top:8px">Research assistant<br>University of Regensburg, Germany</p>
+    </div>
+    <p class="type" id="type"></p>
+    <nav class="nav" id="nav">
+      <a href="#about" class="on">About</a>
+      <a href="#questions">Questions I'm chasing</a>
+      <a href="#work">Selected work</a>
+      <a href="#collaborate">Work with me</a>
+      <a href="#path">Path &amp; beyond</a>
+    </nav>
+    <div class="social">
+      <a href="https://scholar.google.com/citations?user=OUZkcNsAAAAJ" target="_blank" rel="noopener">Scholar</a>
+      <a href="https://github.com/afshinbigboy" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/xmindflow" target="_blank" rel="noopener">X-MindFlow</a>
+      <a href="https://www.linkedin.com/in/afshin-bozorgpour-b293014b/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <a class="btn primary" href="#collaborate">Work with me →</a>
+    <button class="theme" id="theme">◐ Light / dark</button>
+  </aside>
+
+  <!-- CENTER -->
+  <main>
+    <section id="about" class="reveal">
+      <div class="mono">About</div>
+      <h2>Models that are small, honest, and useful where data is hard.</h2>
+      <p class="lead">I'm a vision researcher. I started with <em>geometry and tracking</em> for sports video, moved into <em>medical imaging and pathology</em> where labels are scarce and mistakes matter, and now I'm working toward <em>models that see, reason and write</em>: vision-language models, agents and 3D.</p>
+      <p class="muted">The thread through all of it is efficiency and reliability: architectures that fit in the memory you actually have, and results you can trust outside the benchmark. I work at the University of Regensburg in the group of Prof. Dorit Merhof, in a DFG-funded project with clinical collaborators, and I publish mostly at MICCAI and related venues. I also reviewed for MICCAI, Medical Image Analysis and WACV, and I enjoy helping other people get their first strong paper out.</p>
+    </section>
+
+    <section id="questions" class="reveal">
+      <div class="mono">Right now</div>
+      <h2>Questions I'm chasing</h2>
+      <div class="qs">
+        <div class="card q"><div class="n">01</div><div><b>Can a vision-language model write a report that is grounded in what it actually looked at?</b><span>My main focus: report generation where every sentence points back to image evidence, starting with pathology and radiology, with benchmarks and open code so others can build on it.</span></div></div>
+        <div class="card q"><div class="n">02</div><div><b>How do we adapt large foundation models without the large bill?</b><span>Low-rank, quantization and parameter-efficient methods, plus state-space and xLSTM-style sequence models, building on my work on accuracy per FLOP.</span></div></div>
+        <div class="card q"><div class="n">03</div><div><b>Which parts of a vision pipeline can an agent take over safely?</b><span>Annotation, retrieval and quality control with LLM/VLM agents, and how to measure when they fail.</span></div></div>
+        <div class="card q"><div class="n">04</div><div><b>How cheap can 3D understanding get?</b><span>Point-cloud and rendering-based models that keep geometry without the memory bill, building on my earlier work in homography and tracking.</span></div></div>
+      </div>
+    </section>
+
+    <section id="work" class="reveal">
+      <div class="mono">Selected work</div>
+      <h2>Papers and code</h2>
+      <p class="muted">A few projects I'm proud of, grouped by the problem they address. The full list is on <a href="https://scholar.google.com/citations?user=OUZkcNsAAAAJ" target="_blank" rel="noopener" style="color:var(--b)">Google Scholar</a>.</p>
+
+      <div class="theme-h"><h3>Efficient segmentation architectures</h3><span>Do more with the same compute</span></div>
+      <div class="papers">
+        <article class="card paper"><div class="fig"><img src="img/cenet.png" alt="CENet" loading="lazy"></div><div class="body"><span class="mono">MICCAI 2025</span><h4>CENet: Context Enhancement Network</h4><p>Pulls in multi-scale context so segmentation stays sharp on small, hard-to-see structures.</p><div class="links"><a href="https://papers.miccai.org/miccai-2025/0141-Paper2882.html" target="_blank" rel="noopener">Paper</a><a href="https://arxiv.org/abs/2505.18423" target="_blank" rel="noopener">arXiv</a><a href="https://github.com/xmindflow/cenet" target="_blank" rel="noopener">Code</a></div></div></article>
+        <article class="card paper"><div class="fig"><img src="img/lhunet.jpg" alt="LHU-Net" loading="lazy"></div><div class="body"><span class="mono">LHU-Net · co-author</span><h4>A lean hybrid U-Net for 3D segmentation</h4><p>Competitive volumetric results with a fraction of the parameters and FLOPs.</p><div class="links"><a href="https://arxiv.org/abs/2404.05102" target="_blank" rel="noopener">arXiv</a><a href="https://github.com/xmindflow/LHUNet" target="_blank" rel="noopener">Code</a></div></div></article>
+        <article class="card paper"><div class="fig"><img src="img/msa2net.png" alt="MSA2Net" loading="lazy"></div><div class="body"><span class="mono">BMVC 2024 · co-author</span><h4>MSA²Net: adaptive multi-scale attention</h4><p>Smarter skip connections that decide which scale to trust.</p><div class="links"><a href="https://arxiv.org/abs/2407.21640" target="_blank" rel="noopener">arXiv</a><a href="https://github.com/xmindflow/MSA-2Net" target="_blank" rel="noopener">Code</a></div></div></article>
+        <article class="card paper"><div class="fig"><img src="img/daeformer.png" alt="DAE-Former" loading="lazy"></div><div class="body"><span class="mono">MICCAI 2023 · co-author</span><h4>DAE-Former: dual-attention efficient Transformer</h4><p>Efficient attention that keeps both spatial and channel information.</p><div class="links"><a href="https://github.com/xmindflow/DAEFormer" target="_blank" rel="noopener">Code</a></div></div></article>
+      </div>
+
+      <div class="theme-h"><h3>Generative and sequence models</h3><span>Boundaries, diffusion, Vision-LSTM</span></div>
+      <div class="papers">
+        <article class="card paper"><div class="fig"><img src="img/dermosegdiff.png" alt="DermoSegDiff" loading="lazy"></div><div class="body"><span class="mono">MICCAI PRIME 2023</span><h4>DermoSegDiff: boundary-aware diffusion</h4><p>A diffusion model that puts its effort where lesion borders are, instead of treating every pixel alike.</p><div class="links"><a href="https://arxiv.org/abs/2308.02959" target="_blank" rel="noopener">arXiv</a><a href="https://github.com/xmindflow/DermoSegDiff" target="_blank" rel="noopener">Code</a></div></div></article>
+        <article class="card paper"><div class="body" style="justify-content:center"><span class="mono">MICCAI MLMI 2026</span><h4>MaLViL: multi-axis low-rank Vision-LSTM</h4><p>Compresses the sequence model along several axes to cut cost for segmentation.</p><div class="links"><a href="https://arxiv.org/abs/2608.17635" target="_blank" rel="noopener">arXiv</a></div></div></article>
+      </div>
+
+      <div class="theme-h"><h3>Pathology and cytology</h3><span>Clinical collaboration</span></div>
+      <div class="papers" style="grid-template-columns:1fr">
+        <article class="card listrow"><span class="mono">MICCAI COMPAYL 2026</span><b>HemaHier: chain-conditioned ordinal hierarchies for bone-marrow cytology</b><span class="muted">Classification that respects how blood cell lineages are actually organized. <a href="https://arxiv.org/abs/2609.12835" target="_blank" rel="noopener" style="color:var(--b)">arXiv →</a></span></article>
+      </div>
+      <p class="muted" style="margin-top:20px">I also help maintain curated reading lists at <a href="https://github.com/xmindflow" target="_blank" rel="noopener" style="color:var(--b)">X-MindFlow</a> on foundation models, state-space models and implicit neural representations in medical imaging.</p>
+    </section>
+
+    <section id="collaborate" class="reveal">
+      <div class="collab">
+        <div class="mono">Open collaboration</div>
+        <h2 style="margin-bottom:10px">Want to work on a paper <span class="grad">together?</span></h2>
+        <p class="muted">I regularly work with students and researchers from different countries and levels, from undergraduates to Ph.D. students and engineers moving into research. The goal is simple: pick a good problem, do it properly, and end up with a paper you are proud to put your name on, aimed at venues like CVPR, ICCV, ICLR, NeurIPS or MICCAI.</p>
+
+        <div class="cols">
+          <div class="card col"><h4>What you get</h4><ul><li>Co-authorship on the paper</li><li>Regular meetings and honest feedback on ideas, code and writing</li><li>Working starter code, and help finding compute</li><li>A recommendation letter if the work earns it</li></ul></div>
+          <div class="card col"><h4>What I look for</h4><ul><li>Solid Python and PyTorch</li><li>Commitment to a defined period</li><li>Real motivation and seriousness</li><li>English good enough to write a paper</li></ul></div>
+        </div>
+
+        <div class="mono" style="margin-top:8px">How it works</div>
+        <ol class="steps">
+          <li><b>Send me a short email</b>Who you are, your background, a link to some code you wrote, and what you'd like to explore.</li>
+          <li><b>We talk</b>A short call to see whether the topic and the timing fit.</li>
+          <li><b>Scope a problem</b>One question you can realistically answer within your time window.</li>
+          <li><b>Work in a weekly rhythm</b>Experiments, reviews, and writing, with a deadline in mind.</li>
+        </ol>
+        <p class="muted" style="font-size:.85rem;margin-top:14px">This is unpaid academic collaboration, so I can't offer funding or visas.</p>
+
+        <div style="margin-top:22px">
+          <div class="mail" id="mail">afshinbigboy <span>[at]</span> gmail <span>[dot]</span> com</div>
+          <div class="row" style="margin-top:14px">
+            <button class="btn primary" id="send">Write me an email</button>
+            <button class="btn" id="copy">Copy address</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="path" class="reveal">
+      <div class="mono">Path &amp; beyond</div>
+      <h2>Where I come from</h2>
+      <div class="timeline">
+        <div class="tl"><b>Research assistant · University of Regensburg</b><span>2024 – present, DFG-funded, Prof. Dorit Merhof</span></div>
+        <div class="tl"><b>Research assistant · Regensburg and RWTH Aachen</b><span>2021 – 2024, segmentation and generative models in 2D and 3D</span></div>
+        <div class="tl"><b>M.Sc., Information Technology Engineering · University of Tehran</b><span>2017 – 2021, first in the cohort. Thesis on inferring tumor evolution from genomic data (computational biology), plus work on reinforcement learning and MCMC</span></div>
+        <div class="tl"><b>B.Sc., Information Technology Engineering · Sharif University of Technology</b><span>2010 – 2016, thesis on homography and tracking in football video</span></div>
+      </div>
+      <p style="margin:26px 0 12px" class="muted">Beyond the papers: I co-supervise B.Sc. and M.Sc. projects, assist in teaching digital image processing, and co-founded a startup before research took over. I speak English, Persian and some German. Off the screen: swimming, billiards, motorcycles, and the occasional video game.</p>
+      <ul class="tags"><li>PyTorch</li><li>MONAI</li><li>Hugging Face</li><li>OpenCV</li><li>Multi-GPU / SLURM</li><li>Docker</li><li>C++ / Qt</li></ul>
+    </section>
+
+    <footer>© <span id="y"></span> Afshin Bozorgpour · Regensburg, Germany</footer>
+  </main>
+
+  <!-- RIGHT -->
+  <aside class="rail">
+    <div class="stick">
+      <div class="card mini"><h4><span class="dot"></span>Open to</h4><ul><li><b>Paper collaborations</b></li><li>Reviewing and talks</li><li>Research projects with industry</li></ul></div>
+      <div class="card mini"><h4>Now</h4><ul><li>Writing up work on <b>efficient sequence models</b></li><li>Building toward <b>grounded VLM report generation</b>, with agents and 3D next</li><li>Based in <b>CET</b>, easy to meet with Europe, Asia and the Middle East</li></ul></div>
+      <div class="card mini"><h4>Skip the long intro</h4><ul><li>A few lines about you</li><li>A link to your code</li><li>The topic that excites you</li></ul></div>
+    </div>
+  </aside>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+// email is assembled only on interaction, never present as plain text or a mailto link in the HTML
+const email=()=>atob('YWZzaGluYmlnYm95QGdtYWlsLmNvbQ==');
+const toast=m=>{const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)};
+document.getElementById('send').onclick=()=>{location.href='mailto:'+email()+'?subject='+encodeURIComponent('Research collaboration')};
+document.getElementById('copy').onclick=async()=>{try{await navigator.clipboard.writeText(email());toast('Email copied')}catch{toast('Select the address and copy it')}};
+
+// typing
+const phrases=['Computer vision & ML','Efficient architectures','Vision-language models','Agents & 3D'];
+const el=document.getElementById('type');let pi=0,ci=0,del=false;
+(function tick(){const p=phrases[pi];el.textContent=p.slice(0,ci);
+ if(!del&&ci===p.length){del=true;return setTimeout(tick,1500)}
+ if(del&&ci===0){del=false;pi=(pi+1)%phrases.length}
+ ci+=del?-1:1;setTimeout(tick,del?28:55)})();
+
+// reveal + scroll spy
+const ro=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.05});
+document.querySelectorAll('.reveal').forEach(n=>ro.observe(n));
+const links=[...document.querySelectorAll('#nav a')];
+const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id))}}),{rootMargin:'-35% 0px -55% 0px'});
+document.querySelectorAll('main section').forEach(s=>spy.observe(s));
+
+// theme, year, glow
+const root=document.documentElement;try{const t=localStorage.getItem('theme');if(t)root.dataset.theme=t}catch{}
+document.getElementById('theme').onclick=()=>{const t=root.dataset.theme==='light'?'dark':'light';root.dataset.theme=t;try{localStorage.setItem('theme',t)}catch{}};
+document.getElementById('y').textContent=new Date().getFullYear();
+const glow=document.getElementById('glow');addEventListener('pointermove',e=>{glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px'});
+
+// neural-net background
+const cv=document.getElementById('net'),cx=cv.getContext('2d');let W,H,pts=[];const mouse={x:-999,y:-999};
+addEventListener('pointermove',e=>{mouse.x=e.clientX;mouse.y=e.clientY});
+function size(){W=cv.width=innerWidth;H=cv.height=innerHeight;pts=Array.from({length:Math.min(90,Math.floor(W*H/16000))},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35}))}
+size();addEventListener('resize',size);
+(function draw(){cx.clearRect(0,0,W,H);const col=root.dataset.theme==='light'?'60,60,120':'150,160,255';
+ for(const p of pts){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;cx.fillStyle=`rgba(${col},.55)`;cx.beginPath();cx.arc(p.x,p.y,1.6,0,6.3);cx.fill()}
+ for(let i=0;i<pts.length;i++){for(let j=i+1;j<pts.length;j++){const a=pts[i],b=pts[j],d=Math.hypot(a.x-b.x,a.y-b.y);if(d<130){cx.strokeStyle=`rgba(${col},${(1-d/130)*.22})`;cx.beginPath();cx.moveTo(a.x,a.y);cx.lineTo(b.x,b.y);cx.stroke()}}
+  const m=Math.hypot(pts[i].x-mouse.x,pts[i].y-mouse.y);if(m<170){cx.strokeStyle=`rgba(34,211,238,${(1-m/170)*.5})`;cx.beginPath();cx.moveTo(pts[i].x,pts[i].y);cx.lineTo(mouse.x,mouse.y);cx.stroke()}}
+ requestAnimationFrame(draw)})();
+</script>
+</body>
+</html>
